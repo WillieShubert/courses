@@ -4,7 +4,7 @@ from .models import Course
 def index(request):
     context = {
     'courses' : Course.objects.all()
-    #select * from course
+    #select * from courses
     }
     return render(request, "my_courses/index.html", context)
 
@@ -14,15 +14,14 @@ def course(request):
 
 def destroy(request, id):
     context = {
-    'courses' : Course.objects.filter(id = id)
-    #select
+    'courses' : Course.objects.filter(id = id)[0]
+    #select just the first index position in a filter.
     }
+    print context['courses'].course_name
     return render(request,'my_courses/destroy.html', context)
 
-def delete(request, id):
-    if request.method == ['POST']:
-        if request.POST['submit'] == ["delete"]:
-            Course.objects.filter(id = id).delete()
-            return redirect('/')
-        elif request.POST['sumbit'] == ["no"]:
-            return redirect('/')
+def delete(request):
+    print request.POST['id']
+    if request.method == 'POST':
+        Course.objects.filter(id = request.POST['id']).delete()
+        return redirect('/')
