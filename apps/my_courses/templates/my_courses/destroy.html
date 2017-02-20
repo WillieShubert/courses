@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Are you sure you want to delete:</h2>
+    <!-- {% for course in courses %} -->
+    <p>Course Name: {{course.course_name}}</p>
+    <p>Description: {{course.description}}</p>
+    <!-- {% endfor %} -->
+    <button type="button" action= '/delete_course' name="no">NO!!</button>
+    <button type="button"  action= '/delete_course' name="delete">Yes, Delete</button>
+  </body>
+</html>
