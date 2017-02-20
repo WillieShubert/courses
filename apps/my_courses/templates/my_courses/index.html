@@ -11,7 +11,8 @@
         <div class="container">
             <div>
                 <h2>Add a new course</h2>
-                <form class="container" action="index.html" method="post">
+                <form class="container" action="/add_course" method="POST">
+                  {% csrf_token %}
                     <label for="example-text-input" class="col-2 col-form-label">Course Name:</label>
                 <div class="col-10">
                      <input class="form-control" type="text" name="course_name" id="example-text-input">
@@ -23,7 +24,6 @@
                 </div>
             </div>
                 </form>
-
             <div class="">
                 <h2>Courses</h2>
                 <table class="highlight">
@@ -35,10 +35,10 @@
                     </tr>
                       {% for course in courses %}
                     <tr>
-                      <td>{{course.coursename}}</td>
+                      <td>{{course.course_name}}</td>
                       <td>{{course.description}}</ts>
                       <td>{{course.created_at}}</td>
-                      <td class="danger"><a href="#">Remove</a></td>
+                      <td><a href="#">Remove</a></td>
                     </tr>
                       {% endfor %}
                 </table>
